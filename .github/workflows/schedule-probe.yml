@@ -1,0 +1,22 @@
+name: Schedule Probe
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "49 * * * *"
+    - cron: "4,19,34 * * * *"
+
+permissions: {}
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - name: Record trigger
+        env:
+          TRIGGER_EVENT: ${{ github.event_name }}
+          TRIGGER_CRON: ${{ github.event.schedule }}
+        run: |
+          date -u
+          printf "event=%s\ncron=%s\n" "$TRIGGER_EVENT" "$TRIGGER_CRON"
