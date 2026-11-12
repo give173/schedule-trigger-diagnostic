@@ -3,8 +3,7 @@ name: Schedule Probe
 on:
   workflow_dispatch:
   schedule:
-    - cron: "49 * * * *"
-    - cron: "4,19,34 * * * *"
+    - cron: "2-57/5 * * * *"
 
 permissions: {}
 
